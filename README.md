@@ -1,2 +1,2 @@
 # Mehul-Nodejs
-This is my practice project
+This is my practice project for Nest JS
