@@ -1,0 +1,8 @@
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=root
+DB_PORT=3306
+DB_NAME=nest_js
+DB_AUTO_MIGRATE=true
+DB_LOGGING=[ "error"]
+NEST_LOGGER=['error', 'warn','debug','verbose','fatal']
