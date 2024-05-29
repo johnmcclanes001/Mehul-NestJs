@@ -39,6 +39,9 @@ export class ChartOfAccount {
     @Column({nullable:true})
     parent_id:number
 
+    @Column({nullable:true})
+    level:number
+
     @ManyToOne(type => ChartOfAccount,{nullable:true})
     @JoinColumn({name:"parent_id"})
     parent:ChartOfAccount;
