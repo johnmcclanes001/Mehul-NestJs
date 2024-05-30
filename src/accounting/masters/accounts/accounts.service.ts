@@ -25,7 +25,12 @@ export class AccountsService {
       return newCode.msg;
     }
     createAccountDto['code'] = newCode.code;
-    return await this.repository.insert(new Account(createAccountDto));
+    const result = await this.repository.insert(new Account(createAccountDto));
+    if(result.raw?.insertId > 0){
+      return await this.findOne(result.raw.insertId);
+    }else{
+      return "Record Not Inserted";
+    }
   }
 
   async findAll() {
@@ -65,8 +70,17 @@ export class AccountsService {
     
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} account`;
+  async remove(id: number) {
+    const record = await this.findOne(id);
+    if (record) {
+      const result = await this.repository.delete({ id });
+      if(result.affected > 0){
+        return record;
+      }else{
+        return { messsage: ['Record Not Deleted'] }; 
+      }
+    }
+    return { messsage: ['Record Not Found'] };
   }
 
   async generateAccountCode(coaId: number) {
