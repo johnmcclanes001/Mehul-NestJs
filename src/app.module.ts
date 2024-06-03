@@ -6,13 +6,13 @@ import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
 import { ItemsModule } from './items/items.module';
 import { CategoriesModule } from './categories/categories.module';
-import { ChartOfAccountsModule } from './accounting/masters/chart_of_accounts/chart_of_accounts.module';
 import { KafkaModule } from './kafka/kafka.module';
 import { TestConsumer } from './kafka/consumers/test.consumer';
-import { AccountsModule } from './accounting/masters/accounts/accounts.module';
+import { AccountingMastersModule } from './accounting/masters/accounting_masters.module';
+import { MastersModule } from './masters/masters.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({isGlobal:true}), DatabaseModule,UsersModule, ItemsModule, CategoriesModule, ChartOfAccountsModule, KafkaModule, AccountsModule],
+  imports: [ConfigModule.forRoot({isGlobal:true}), DatabaseModule, MastersModule, AccountingMastersModule,UsersModule, ItemsModule, CategoriesModule, KafkaModule],
   controllers: [AppController],
   providers: [AppService,/* TestConsumer */],
 })
