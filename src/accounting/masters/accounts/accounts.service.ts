@@ -11,6 +11,8 @@ import { ChartOfAccountsService } from '../chart_of_accounts/chart_of_accounts.s
  *  Generate Code based on chart of account code and max account code + 1
  */
 
+//'Droid Sans Mono', 'monospace', monospace
+
 @Injectable()
 export class AccountsService {
   constructor(
